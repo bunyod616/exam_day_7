@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Delete message{% endblock %}
+
+{% block content %}
+<h2>Delete message</h2>
+<p>Are you sure that you want to delete this message?</p>
+<form id="deleteMessageForm" method="post">
+    {% csrf_token %}
+    <button type="submit" name="delete_for_me">Delete for me</button>
+    <button type="submit" name="delete_for_both">Delete for both</button>
+    <button type="submit" name="cancel">Back</button>
+</form>
+{% endblock %}
+

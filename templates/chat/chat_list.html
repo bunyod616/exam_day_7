@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="color: white;">Your Chats</h2>
+<form method="GET" action="{% url 'chat_list' %}">
+    <input type="text" name="q" placeholder="Search friends">
+    <button type="submit"><span class="material-symbols-outlined">data_loss_prevention</span></button>
+</form>
+
+{% if search_results %}
+    <h3>Search Results:</h3>
+    <ul>
+        {% for user in search_results %}
+        <div class="serch">
+            <img src="" alt="">
+            <ul>
+                <li><a href="{% url 'start_chat' user.id %}" id="name">{{ user.username }}</a></li>
+                <p>salom 👋</p>
+            </ul>
+
+        </div>
+        {% endfor %}
+    </ul>
+
+{% endif %}
+
+<h3>Chats:</h3>
+<ul>
+    {% for chat in chats %}
+    <div class="serch">
+        <img src="" alt="">
+        <ul>
+            <li><a href="{% url 'chat_detail' chat.id %}" id="name">{{ chat }}</a></li>
+        </ul>
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
